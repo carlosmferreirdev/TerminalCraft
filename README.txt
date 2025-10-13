@@ -5,8 +5,8 @@ Key changes:
 - Namespace renamed to 'TerminalCraft'.
 - Old Program.cs replaced with a minimal entry point.
 - Added GameManager.cs to handle menus, world management and the main loop.
-- Added Compendium.cs to handle tamed-animal tracking and display.
-- Files reorganized into folders: Entities, World, Systems, UI for clarity.
+- Added Compendium.cs to handle tamed animals tracking and display.
+- Files reorganized into folders: Entities, World, Systems, UI and CreatedWorlds for clarity.
 
 Files and locations:
 - /Program.cs
