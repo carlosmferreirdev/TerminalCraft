@@ -1,0 +1,14 @@
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\obj\Debug\net6.0\MCT_test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\obj\Debug\net6.0\MCT_test.AssemblyInfoInputs.cache
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\obj\Debug\net6.0\MCT_test.AssemblyInfo.cs
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\obj\Debug\net6.0\MCT_test.csproj.CoreCompileInputs.cache
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\bin\Debug\net6.0\MCT_test.exe
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\bin\Debug\net6.0\MCT_test.deps.json
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\bin\Debug\net6.0\MCT_test.runtimeconfig.json
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\bin\Debug\net6.0\MCT_test.dll
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\bin\Debug\net6.0\MCT_test.pdb
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\obj\Debug\net6.0\MCT_test.dll
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\obj\Debug\net6.0\refint\MCT_test.dll
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\obj\Debug\net6.0\MCT_test.pdb
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\obj\Debug\net6.0\MCT_test.genruntimeconfig.cache
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MCT_test\obj\Debug\net6.0\ref\MCT_test.dll
