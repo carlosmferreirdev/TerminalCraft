@@ -57,24 +57,9 @@ namespace TerminalCraft
             // Final prompt in white
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
-            ShowTypewriter("Press any key to start...", delayMs: 25, center: true);
+            TextFx.Typewriter("Press any key to start...", delayMs: 25, center: true);
             Console.ReadKey();
             Console.Clear();
-        }
-
-        private static void ShowTypewriter(string text, int delayMs = 30, bool center = false)
-        {
-            int padding = 0;
-            if (center)
-                padding = (Console.WindowWidth - text.Length) / 2;
-
-            Console.Write(new string(' ', Math.Max(padding, 0)));
-
-            foreach (char c in text)
-            {
-                Console.Write(c);
-                Thread.Sleep(delayMs);
-            }
         }
     }
 }

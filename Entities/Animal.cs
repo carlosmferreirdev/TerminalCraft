@@ -1,6 +1,3 @@
-// File: Entities/Animal.cs
-// Updated to inherit from Mob
-
 using System;
 using System.Collections.Generic;
 
@@ -10,12 +7,7 @@ namespace TerminalCraft
     {
         public int FoodYield { get; private set; }
 
-        private static readonly HashSet<string> TamableAnimals = new()
-        {
-            "Wolf",
-            "Parrot",
-            "Frog"
-        };
+        private static readonly HashSet<string> TamableAnimals = new() { "Wolf", "Parrot", "Frog" };
 
         public Animal(string name, int foodYield)
             : base(name, health: 10, damage: 0, isHostile: false)

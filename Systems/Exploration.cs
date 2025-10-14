@@ -9,7 +9,7 @@ namespace TerminalCraft
 {
     public static class Exploration
     {
-        public static void Explore(Player player, Random rand, ref int tickCount, ref bool isDay, List<HostileMob> hostileMobs)
+        public static void Explore(Player player, Random rand, ref int tickCount, ref bool isDay, List<HostileMob> hostileMobs, Systems.Weather.WeatherContext? weather = null)
         {
             Console.Clear();
 
@@ -20,9 +20,17 @@ namespace TerminalCraft
                 isDay = !isDay;
                 tickCount = 0;
 
+                Console.Clear();
                 Console.ForegroundColor = isDay ? ConsoleColor.Yellow : ConsoleColor.DarkBlue;
-                Console.WriteLine(isDay ? "The sun rises. It's now daytime." : "Night falls. The world darkens...");
-                Console.ForegroundColor = ConsoleColor.White;
+                string transitionMsg = isDay ? "The sun rises. It's now daytime." : "Night falls. The world darkens...";
+                Console.WriteLine("== Time Transition ==\n");
+                TextFx.Typewriter(transitionMsg + "\n", delayMs: 20, center: false);
+                Console.ResetColor();
+                // Optional small sound cue (day brighter, night lower)
+                TextFx.PlayTransitionSound(isDay);
+                TextFx.Typewriter("Press any key to continue...", delayMs: 12, center: false);
+                Console.ReadKey();
+                Console.Clear();
             }
 
             // Check for hostile mobs only at night
@@ -46,7 +54,7 @@ namespace TerminalCraft
                 }
             }
 
-            Biome? biome = BiomeFactory.GetRandomBiome();
+            Biome? biome = weather == null ? BiomeFactory.GetRandomBiome() : BiomeFactory.GetRandomBiome(weather);
             if (biome == null)
             {
                 Console.WriteLine("No biome found.");

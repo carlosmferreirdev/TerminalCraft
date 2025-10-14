@@ -1,7 +1,3 @@
-using System;
-// File: Entities/HostileMob.cs
-// Updated to inherit from Mob
-
 namespace TerminalCraft
 {
     public class HostileMob : Mob
@@ -20,9 +16,6 @@ namespace TerminalCraft
             Console.WriteLine($"The {Name} growls menacingly...");
         }
 
-        public override string ToString()
-        {
-            return $"{Name} (DMG: {Damage}, HP: {Health})";
-        }
+        public override string ToString() => $"{Name} (DMG: {Damage}, HP: {Health})";
     }
 }

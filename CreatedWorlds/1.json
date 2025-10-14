@@ -2,8 +2,10 @@
   "Name": "Steve",
   "World": "1",
   "Inventory": {
-    "Oak Wood": 1,
-    "Food": 2
+    "Food": 3,
+    "Mangrove Wood": 3
   },
-  "TamedAnimals": []
+  "TamedAnimals": [
+    "Parrot"
+  ]
 }

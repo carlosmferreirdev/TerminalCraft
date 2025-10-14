@@ -1,18 +1,18 @@
-//Entities/Mob.cs
-
-using System;
+// Base abstract entity type
 
 namespace TerminalCraft
 {
 
-    // Base class for all living entities (animals, hostile mobs, etc...)
     public abstract class Mob
     {
+        #region Properties
         public string Name { get; protected set; }
         public int Health { get; protected set; }
         public int Damage { get; protected set; }
         public bool IsHostile { get; protected set; }
+        #endregion
 
+        #region Ctor
         protected Mob(string name, int health, int damage, bool isHostile)
         {
             Name = name;
@@ -20,7 +20,10 @@ namespace TerminalCraft
             Damage = damage;
             IsHostile = isHostile;
         }
-        //Common entry point for interaction. Subclasses override this with their specific behavior.
+        #endregion
+
+        #region Interaction
         public abstract void Interact(Player player);
+        #endregion
     }
 }
