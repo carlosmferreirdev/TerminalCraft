@@ -1,9 +1,11 @@
-# TerminalCraft - Refactored Project
+# TerminalCraft
 
-This project was refactored from the original 'MinecraftTerminalRPG' project.
+This project was refactored from the original 'MinecraftTerminalRPG' project and is serving as a canvas for me to relearn and practice coding in C#.
+I will try and implement as many functionalities as possible while also trying to stay somewhat faithful to the original game we all know and love.
+
 Key changes:
 - Namespace renamed to 'TerminalCraft'.
-- Old Program.cs replaced with a minimal entry point.
+- Old Program.cs replaced with a minimal entry point for the program to run.
 - Added GameManager.cs to handle menus, world management and the main loop.
 - Added Compendium.cs to handle tamed animals tracking and display.
 - Files reorganized into folders: Entities, World, Systems, UI and CreatedWorlds for clarity.
