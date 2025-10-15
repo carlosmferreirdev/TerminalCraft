@@ -9,6 +9,8 @@ Key changes:
 - Added GameManager.cs to handle menus, world management and the main loop.
 - Added Compendium.cs to handle tamed animals tracking and display.
 - Files reorganized into folders: Entities, World, Systems, UI and CreatedWorlds for clarity.
+- Added OpenWeatherMap API to get a the climate from a list of random cities and applying it to the selected world automatically.
+- Added basic Mining and Crafting mechanics.
 
 Files and locations:
 - /Program.cs
