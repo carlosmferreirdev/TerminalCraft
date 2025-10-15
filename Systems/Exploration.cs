@@ -26,8 +26,6 @@ namespace TerminalCraft
                 Console.WriteLine("== Time Transition ==\n");
                 TextFx.Typewriter(transitionMsg + "\n", delayMs: 20, center: false);
                 Console.ResetColor();
-                // Optional small sound cue (day brighter, night lower)
-                TextFx.PlayTransitionSound(isDay);
                 TextFx.Typewriter("Press any key to continue...", delayMs: 12, center: false);
                 Console.ReadKey();
                 Console.Clear();

@@ -1,0 +1,10 @@
+{
+  "Name": "Steve",
+  "World": "Debug",
+  "Inventory": {
+    "Oak Wood": 3,
+    "Mushroom": 1,
+    "Food": 1
+  },
+  "TamedAnimals": []
+}

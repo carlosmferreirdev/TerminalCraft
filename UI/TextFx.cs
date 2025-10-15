@@ -27,31 +27,5 @@ namespace TerminalCraft
                     Thread.Sleep(delayMs);
             }
         }
-
-        /// <summary>
-        /// Plays a simple pitched console beep to indicate transition.
-        /// Day: higher pitch, Night: lower pitch. Swallows exceptions if beeps aren't supported.
-        /// </summary>
-        public static void PlayTransitionSound(bool isDay)
-        {
-            try
-            {
-                // Frequency bounds for typical console beep (37 - 32767)
-                int freq = isDay ? 1200 : 400;
-                Console.Beep(freq, 140);
-                // Add second softer accent
-                int accent = isDay ? 1600 : 300;
-                Console.Beep(accent, 90);
-            }
-            catch { /* Ignore on platforms without beep access */ }
-        }
-
-        /// <summary>
-        /// Simple one-shot notification beep (neutral tone).
-        /// </summary>
-        public static void Notify()
-        {
-            try { Console.Beep(900, 120); } catch { }
-        }
     }
 }
