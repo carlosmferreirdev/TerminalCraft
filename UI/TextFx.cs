@@ -4,7 +4,7 @@ using System.Threading;
 namespace TerminalCraft
 {
     /// <summary>
-    /// Utility text & simple sound effects for console presentation.
+    /// Utility text for console presentation.
     /// </summary>
     public static class TextFx
     {

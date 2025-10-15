@@ -8,7 +8,7 @@ This update introduces a new shared base class for all living entities in the ga
   - `Name`
   - `Health`
   - `Damage`
-  - `IsHostile`
+  - `IsHostile` (future proof for being able to turn animals agressive. Ex: Polar bears)
 - The abstract method `Interact(Player player)` now ensures consistent interaction entry points.
 
 ## Why
@@ -16,7 +16,7 @@ This sets the stage for a unified entity system where future features (like comb
 
 ## Behavior
 All current interactions (taming, hunting, etc.) remain exactly the same.
-There are no functional changes — only the architecture was improved.
+There are no functional changes — only the architecture was improved, mostly for future proofing.
 
 ## Future Possibilities
 - Implement shared combat logic (`Attack`, `TakeDamage`)

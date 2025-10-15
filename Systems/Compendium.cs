@@ -33,6 +33,9 @@ namespace TerminalCraft
             else
                 foreach (var animal in player.TamedAnimals)
                     Console.WriteLine("- " + animal);
+
+            Console.WriteLine("\nPress any key to return...");
+            Console.ReadKey();
         }
     }
 }

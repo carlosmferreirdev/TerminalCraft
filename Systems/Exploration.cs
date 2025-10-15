@@ -31,26 +31,11 @@ namespace TerminalCraft
                 Console.Clear();
             }
 
-            // Check for hostile mobs only at night
-            if (!isDay)
-            {
-                var mob = hostileMobs[rand.Next(hostileMobs.Count)];
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"A hostile {mob.Name} appears in the shadows!");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("Do you want to fight it? (yes/no): ");
 
-                string choice = Console.ReadLine()?.ToLowerInvariant() ?? "";
-                if (choice != "yes")
-                {
-                    Console.WriteLine("You ran away safely, but missed your chance to explore.");
-                    return; // Cancel exploration
-                }
-                else
-                {
-                    Console.WriteLine($"You bravely fought the {mob.Name} and survived!");
-                }
-            }
+            // Build encounter list for this exploration
+            var encounters = new List<IEncounter>();
+            if (!isDay && hostileMobs.Count > 0)
+                encounters.Add(hostileMobs[rand.Next(hostileMobs.Count)]);
 
             Biome? biome = weather == null ? BiomeFactory.GetRandomBiome() : BiomeFactory.GetRandomBiome(weather);
             if (biome == null)
@@ -60,21 +45,32 @@ namespace TerminalCraft
             }
             Console.WriteLine($"You find a {biome.Name} biome.");
 
+            Animal? animal = biome.GetRandomAnimal();
+            if (animal != null)
+                encounters.Add(animal);
+
+            // Add more IEncounter types here (e.g., CaveEncounter, TreasureEncounter)
+
+            if (encounters.Count > 0)
+            {
+                var encounter = encounters[rand.Next(encounters.Count)];
+                encounter.Trigger(player, rand);
+                // If the encounter ends exploration (e.g., running from mob), return early
+                if (encounter is HostileMob) return;
+            }
+
             // Cave logic (50% chance)
             bool hasCave = rand.NextDouble() < 0.50;
-
             if (hasCave)
             {
                 Console.Write("You see a dark cave entrance. Explore it? (yes/no): ");
                 string caveChoice = Console.ReadLine()?.Trim().ToLower() ?? "";
-
                 if (caveChoice == "yes")
                 {
-                    //Start a stopwatch to simulate time spent in cave
-                    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
                     Console.WriteLine("\nYou enter the cave... it's cold and dark.");
-
-                    //While wip
+                    // Trigger mining encounter
+                    var miningEncounter = new MiningEncounter();
+                    miningEncounter.Trigger(player, rand);
                 }
                 else
                 {
@@ -85,14 +81,21 @@ namespace TerminalCraft
             string? tree = biome.GetRandomTree();
             if (!string.IsNullOrEmpty(tree))
             {
-                Console.Write($"You see {tree} trees. Chop them down? (yes/no): ");
-
+                // Special-case vegetation names that aren't really trees
+                string vegetation = tree switch
+                {
+                    "Cactus" => "Cacti",
+                    "Tall Mushroom" => "Tall Mushrooms",
+                    _ => $"{tree} trees"
+                };
+                string action = (tree == "Cactus" || tree == "Tall Mushroom") ? "Harvest them" : "Chop them down";
+                Console.Write($"You see {vegetation}. {action}? (yes/no): ");
                 if ((Console.ReadLine() ?? "").ToLowerInvariant() == "yes")
                 {
                     switch (tree)
                     {
                         case "Oak":
-                            player.Collect("Oak Wood", rand.Next(1, 4)); // 1-3 wood
+                            player.Collect("Oak Wood", rand.Next(1, 4));
                             if (rand.NextDouble() < 0.3)
                             {
                                 Console.WriteLine("You salvaged an apple from the oak tree!");
@@ -127,61 +130,9 @@ namespace TerminalCraft
                 }
             }
 
-            Animal? animal = biome.GetRandomAnimal();
-            if (animal != null)
-            {
-                if (animal.Name == "Wolf" || animal.Name == "Parrot" || animal.Name == "Frog")
-                {
-                    Console.Write($"You see a {animal.Name}. Attempt to tame it? (yes/no): ");
-                    if ((Console.ReadLine() ?? "").ToLowerInvariant() == "yes")
-                    {
-                        double chance = animal.Name switch
-                        {
-                            "Wolf" => 0.3,
-                            "Parrot" => 0.5,
-                            "Frog" => 0.4,
-                            _ => 0
-                        };
-
-                        if (rand.NextDouble() < chance)
-                        {
-                            Console.WriteLine($"You successfully tamed the {animal.Name}! It will now follow you.");
-                            player.TameAnimal(animal.Name);
-                        }
-                        else
-                        {
-                            Console.WriteLine($"The {animal.Name} escaped.");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine($"You chose not to interact with the {animal.Name}.");
-                    }
-                }
-                else
-                {
-                    Console.Write($"You see a {animal.Name}. Hunt it? (yes/no): ");
-                    if ((Console.ReadLine() ?? "").ToLowerInvariant() == "yes")
-                    {
-                        if (animal.FoodYield > 0)
-                        {
-                            player.Collect("Food", animal.FoodYield);
-                        }
-                        else
-                        {
-                            Console.WriteLine($"The {animal.Name} doesn't drop food.");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine($"You chose not to hunt the {animal.Name}.");
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("No animals in sight.");
-            }
+            // Pause before returning to the game loop to avoid instant clear
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
         }
     }
 }

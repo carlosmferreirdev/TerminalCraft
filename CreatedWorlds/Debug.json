@@ -2,9 +2,20 @@
   "Name": "Steve",
   "World": "Debug",
   "Inventory": {
-    "Oak Wood": 3,
-    "Mushroom": 1,
-    "Food": 1
+    "Food": 13,
+    "Acacia Wood": 5,
+    "Mangrove Wood": 6,
+    "Spruce Wood": 1
   },
-  "TamedAnimals": []
+  "Pickaxes": [
+    {
+      "Quality": 1,
+      "Durability": 30,
+      "MaxDurability": 30
+    }
+  ],
+  "TamedAnimals": [
+    "Wolf",
+    "Frog"
+  ]
 }

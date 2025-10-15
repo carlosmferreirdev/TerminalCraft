@@ -91,9 +91,18 @@ namespace TerminalCraft.Systems
                 Console.WriteLine("4. Exit\n");
                 switch (Console.ReadLine())
                 {
-                    case "1": return CreateWorld();
-                    case "2": return LoadWorld();
-                    case "3": DeleteWorld(); break;
+                    case "1":
+                        var created = CreateWorld();
+                        Console.Clear();
+                        return created;
+                    case "2":
+                        var loaded = LoadWorld();
+                        Console.Clear();
+                        return loaded;
+                    case "3":
+                        DeleteWorld();
+                        Console.Clear();
+                        break;
                     case "4":
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Yellow;
@@ -101,8 +110,12 @@ namespace TerminalCraft.Systems
                         Console.ResetColor();
                         Console.WriteLine("Press any key to exit...");
                         Console.ReadKey();
+                        Console.Clear();
                         return null;
-                    default: InvalidChoice(); break;
+                    default:
+                        InvalidChoice();
+                        Console.Clear();
+                        break;
                 }
             }
         }
@@ -124,12 +137,14 @@ namespace TerminalCraft.Systems
             {
                 Console.WriteLine("World already exists. Use Load World instead.");
                 Console.ReadKey();
+                Console.Clear();
                 return null;
             }
             player = new Player("Steve", name);
             player.SaveToFile();
             Console.WriteLine($"World '{name}' created successfully!");
             Console.ReadKey();
+            Console.Clear();
             return name;
         }
 
@@ -137,6 +152,7 @@ namespace TerminalCraft.Systems
         {
             while (true)
             {
+                Console.Clear();
                 var files = Directory.GetFiles(WorldsFolder, "*.json");
                 if (files.Length == 0)
                 {
@@ -145,19 +161,21 @@ namespace TerminalCraft.Systems
                     Console.ResetColor();
                     Console.WriteLine("Press any key to return to main menu...");
                     Console.ReadKey();
+                    Console.Clear();
                     return null;
                 }
                 Console.WriteLine("Saved worlds:");
                 foreach (var file in files) Console.WriteLine(Path.GetFileNameWithoutExtension(file));
                 Console.Write("\nEnter the name of the world to load (or 'back'): ");
                 var name = Console.ReadLine()?.Trim();
-                if (string.Equals(name, "back", StringComparison.OrdinalIgnoreCase)) return null;
-                if (string.IsNullOrWhiteSpace(name)) continue;
+                if (string.Equals(name, "back", StringComparison.OrdinalIgnoreCase)) { Console.Clear(); return null; }
+                if (string.IsNullOrWhiteSpace(name)) { Console.Clear(); continue; }
                 string path = Path.Combine(WorldsFolder, $"{name}.json");
                 if (File.Exists(path))
                 {
                     Console.WriteLine($"World '{name}' loaded successfully.");
                     Console.ReadKey();
+                    Console.Clear();
                     return name;
                 }
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -175,13 +193,14 @@ namespace TerminalCraft.Systems
             {
                 Console.WriteLine("No saved worlds to delete.");
                 Console.ReadKey();
+                Console.Clear();
                 return;
             }
             Console.WriteLine("Saved worlds:");
             foreach (var file in files) Console.WriteLine(Path.GetFileNameWithoutExtension(file));
             Console.Write("\nEnter the name of the world to delete: ");
             var name = Console.ReadLine()?.Trim();
-            if (string.IsNullOrWhiteSpace(name)) return;
+            if (string.IsNullOrWhiteSpace(name)) { Console.Clear(); return; }
             string path = Path.Combine(WorldsFolder, $"{name}.json");
             if (File.Exists(path))
             {
@@ -191,6 +210,7 @@ namespace TerminalCraft.Systems
             else Console.WriteLine("World not found.");
             Console.WriteLine("Press any key to return...");
             Console.ReadKey();
+            Console.Clear();
         }
         #endregion
 
@@ -208,22 +228,53 @@ namespace TerminalCraft.Systems
                 Console.WriteLine("\n");
                 Console.WriteLine("1. Explore");
                 Console.WriteLine("2. View Inventory");
-                Console.WriteLine("3. Crafting (Work in Progress)");
+                Console.WriteLine("3. Crafting");
                 Console.WriteLine("4. Build (Work in Progress)");
                 Console.WriteLine("5. Compendium");
                 Console.WriteLine("6. Save & Quit");
-                switch (Console.ReadLine())
+                Console.WriteLine("\n[DEBUG] 9. Give Wooden Pickaxe");
+                var input = Console.ReadLine();
+                switch (input)
                 {
-                    case "1": Exploration.Explore(player, rand, ref tickCount, ref isDay, hostileMobs, _weather); break;
-                    case "2": player.ShowInventory(); break;
-                    case "3": Console.WriteLine("Feature coming soon!"); break;
-                    case "4": Console.WriteLine("Feature coming soon!"); break;
-                    case "5": Compendium.Show(player); break;
-                    case "6": SaveAndReturnToMenu(); return;
-                    default: Console.WriteLine("Invalid choice."); break;
+                    case "1":
+                        Exploration.Explore(player, rand, ref tickCount, ref isDay, hostileMobs, _weather);
+                        Console.Clear();
+                        break;
+                    case "2":
+                        player.ShowInventory();
+                        Console.Clear();
+                        break;
+                    case "3":
+                        CraftingSystem.ShowCraftingMenu(player);
+                        Console.Clear();
+                        break;
+                    case "4":
+                        Console.WriteLine("Feature coming soon!");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case "5":
+                        Compendium.Show(player);
+                        Console.Clear();
+                        break;
+                    case "6":
+                        SaveAndReturnToMenu();
+                        Console.Clear();
+                        return;
+                    case "9":
+                        player.Collect("Wooden Pickaxe", 1);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("[DEBUG] Wooden Pickaxe added to inventory!");
+                        Console.ResetColor();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
                 }
-                Console.WriteLine("\nPress any key to continue...");
-                Console.ReadKey();
             }
         }
 

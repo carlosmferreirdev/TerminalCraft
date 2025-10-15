@@ -1,0 +1,33 @@
+{
+  "Name": "Steve",
+  "World": "test",
+  "Inventory": {
+    "Stone": 85,
+    "Iron Ore": 5,
+    "Diamond": 1,
+    "Cactus": 4,
+    "Food": 11,
+    "Oak Wood": 3,
+    "Spruce Wood": 1,
+    "Mushroom": 1,
+    "Jungle Wood": 3
+  },
+  "Pickaxes": [
+    {
+      "Quality": 1,
+      "Durability": 15,
+      "MaxDurability": 30
+    },
+    {
+      "Quality": 2,
+      "Durability": 60,
+      "MaxDurability": 60
+    },
+    {
+      "Quality": 3,
+      "Durability": 68,
+      "MaxDurability": 120
+    }
+  ],
+  "TamedAnimals": []
+}
