@@ -16,8 +16,9 @@ namespace TerminalCraft
             // Ensure player data is saved if the app is closed unexpectedly
             AppDomain.CurrentDomain.ProcessExit += OnProcessExit;
             Console.CancelKeyPress += OnCancelKeyPress;
-            
+
             TitleScreen.Show();
+            Console.Clear();
             GameManager.Start();
         }
         

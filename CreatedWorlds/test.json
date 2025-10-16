@@ -2,15 +2,16 @@
   "Name": "Steve",
   "World": "test",
   "Inventory": {
-    "Stone": 85,
-    "Iron Ore": 5,
-    "Diamond": 1,
+    "Stone": 106,
+    "Iron Ore": 11,
+    "Diamond": 4,
     "Cactus": 4,
-    "Food": 11,
+    "Food": 14,
     "Oak Wood": 3,
     "Spruce Wood": 1,
-    "Mushroom": 1,
-    "Jungle Wood": 3
+    "Mushroom": 3,
+    "Jungle Wood": 3,
+    "Acacia Wood": 2
   },
   "Pickaxes": [
     {
@@ -25,7 +26,7 @@
     },
     {
       "Quality": 3,
-      "Durability": 68,
+      "Durability": 38,
       "MaxDurability": 120
     }
   ],

@@ -43,7 +43,11 @@ namespace TerminalCraft
                 Console.WriteLine("No biome found.");
                 return;
             }
-            Console.WriteLine($"You find a {biome.Name} biome.");
+            Console.Write("You find a ");
+            Console.ForegroundColor = GetBiomeColor(biome.Name);
+            Console.Write(biome.Name);
+            Console.ResetColor();
+            Console.WriteLine(" biome.");
 
             Animal? animal = biome.GetRandomAnimal();
             if (animal != null)
@@ -133,6 +137,23 @@ namespace TerminalCraft
             // Pause before returning to the game loop to avoid instant clear
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
+        }
+
+        private static ConsoleColor GetBiomeColor(string biomeName)
+        {
+            return biomeName switch
+            {
+                "Forest" => ConsoleColor.DarkGreen,
+                "Jungle" => ConsoleColor.Green,
+                "Mountains" => ConsoleColor.Gray,
+                "Plains" => ConsoleColor.Yellow,
+                "Taiga" => ConsoleColor.DarkCyan,
+                "Desert" => ConsoleColor.DarkYellow,
+                "Swamp" => ConsoleColor.DarkGreen,
+                "Snowy Tundra" => ConsoleColor.White,
+                "Savanna" => ConsoleColor.DarkYellow,
+                _ => ConsoleColor.White
+            };
         }
     }
 }

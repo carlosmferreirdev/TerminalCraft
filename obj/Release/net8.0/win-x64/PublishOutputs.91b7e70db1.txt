@@ -1,0 +1,2 @@
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MinecraftTerminalRPG\publish\win-x64\MCT_test.pdb
+C:\Users\CarlosFerreira\OneDrive - IG&H\Desktop\Projects\MinecraftTerminalRPG\publish\win-x64\MCT_test.exe

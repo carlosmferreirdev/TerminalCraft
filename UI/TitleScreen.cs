@@ -32,7 +32,7 @@ namespace TerminalCraft
                 @"║                                                    ║",
                 @"║                 M I N E C R A F T                  ║",
                 @"║                 TERMINAL EDITION                   ║",
-                @"║                  - BETA v1.0.0 -                   ║",
+                @"║                    - v1.0.0 -                      ║",
                 @"╚════════════════════════════════════════════════════╝"
             };
 

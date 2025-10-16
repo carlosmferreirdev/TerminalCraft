@@ -232,7 +232,6 @@ namespace TerminalCraft.Systems
                 Console.WriteLine("4. Build (Work in Progress)");
                 Console.WriteLine("5. Compendium");
                 Console.WriteLine("6. Save & Quit");
-                Console.WriteLine("\n[DEBUG] 9. Give Wooden Pickaxe");
                 var input = Console.ReadLine();
                 switch (input)
                 {
@@ -261,14 +260,6 @@ namespace TerminalCraft.Systems
                         SaveAndReturnToMenu();
                         Console.Clear();
                         return;
-                    case "9":
-                        player.Collect("Wooden Pickaxe", 1);
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("[DEBUG] Wooden Pickaxe added to inventory!");
-                        Console.ResetColor();
-                        Console.ReadKey();
-                        Console.Clear();
-                        break;
                     default:
                         Console.WriteLine("Invalid choice.");
                         Console.ReadKey();

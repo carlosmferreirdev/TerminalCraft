@@ -470,9 +470,6 @@ namespace TerminalCraft
                 try
                 {
                     File.WriteAllText(path, json);
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine($"[DEBUG] Player data saved to {path} at {DateTime.Now:HH:mm:ss.fff}");
-                    Console.ResetColor();
                     break;
                 }
                 catch (IOException) when (attempt < retries)
